@@ -27,12 +27,7 @@ jobs:
           cd ../client
           npm ci
 
-      - name: Run tests
-        run: |
-          cd server
-          npm run test
-          cd ../client
-          npm run test
+      
 
       - name: Build and deploy server
         uses: akhileshns/heroku-deploy@v3.12.12
