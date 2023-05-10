@@ -2,10 +2,16 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "puppeteer": "^19.4.1"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC"
+  
 }
