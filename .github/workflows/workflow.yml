@@ -35,7 +35,7 @@ jobs:
           heroku_email: 'quyet.lh198327@sis.hust.edu.vn'
 
       - name: Deploy to GitHub Pages
-        uses: lequyet2001/github-pages-deploy-action@4.1.0
+        uses: lequyet2001/client
         with:
           branch: gh-pages
           folder: client/build
