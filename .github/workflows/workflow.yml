@@ -62,7 +62,7 @@ jobs:
           npm run build
 
       - name: Deploy client to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v5.0.0
+        uses: peaceiris/actions-gh-pages@v3.9.3
         with:
           personal_token: ${{ secrets.GH_TOKEN }}
           publish_dir: ./client/build
