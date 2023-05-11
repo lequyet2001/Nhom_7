@@ -8,7 +8,7 @@ RUN sudo apt-get install npm
 
 FROM node:18.12.1
 WORKDIR /
-COPY package*.json FROM ./
+COPY package*.json  ./
 RUN npm install 
 
 COPY . .

@@ -12,4 +12,30 @@
         sudo apt install docker-ce
     - Kiểm tra version đang sử dụng:
         docker --version
-# Thiết lập Dockerfile : ./server/Dockerfile
+    - Thiết lập Dockerfile :
+        FROM ubuntu:20.04
+        RUN apt-get update && apt-get install -y curl 
+        RUN sudo apt-get install nodejs
+        RUN sudo apt-get install npm
+
+
+
+
+        FROM node:18.12.1
+        WORKDIR /
+        COPY package*.json  ./
+        RUN npm install 
+
+        COPY . .
+
+        EXPOSE 9090
+        CMD ["npm","start"]
+
+
+    - Xây dựng images Docker:
+        docker build -t your-image-name .
+    - Đăng nhập Docker: 
+        docker login
+    - Tải image lên Docker Hub:
+        docker push your-username/your-image-name
+# CI/CD với github action và heroku
