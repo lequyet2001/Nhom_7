@@ -34,7 +34,7 @@ jobs:
         with:
           heroku_api_key: ${{ env.HEROKU_API_KEY }}
           heroku_app_name: 'nhom7'
-          heroku_email: 'quyet.lh198327@sis.hust.edu.vn'
+          heroku_email: '123@gmail.com'
           buildpacks: 'heroku/nodejs'
           usedocker: false
           appdir: 'server'
