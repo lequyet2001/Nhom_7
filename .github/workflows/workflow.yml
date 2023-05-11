@@ -18,13 +18,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: '14.x'
+          node-version: '18.x'
           
       - name: Install dependencies
         run: |
           cd server
           npm ci
-         
+          cd ../client
+          npm ci
 
       
 
@@ -48,7 +49,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: '14.x'
+          node-version: '18.x'
           
       - name: Install dependencies
         run: |
