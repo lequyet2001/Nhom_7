@@ -34,8 +34,8 @@ jobs:
         with:
           heroku_api_key: ${{ env.HEROKU_API_KEY }}
           heroku_app_name: 'nhom7'
-          heroku_email: '123@gmail.com'
-          buildpacks: 'heroku/nodejs'
+          heroku_email: 'quyet.lh198327@sis.hust.edu.vn'
+          buildpack: 'heroku/nodejs'
           usedocker: false
           appdir: 'server'
           
@@ -49,7 +49,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3.5.0
         with:
-          node-version: '18.x'
+          node-version: '14.x'
           
       - name: Install dependencies
         run: |
