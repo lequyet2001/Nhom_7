@@ -1,0 +1,307 @@
+@-ms-viewport {
+    width: device-width
+}
+
+.visible-md-block,
+.visible-lg-block {
+    display: none !important
+}
+
+@media (min-width: 992px) and (max-width:1199px) {
+    .visible-md-block {
+        display: block !important
+    }
+}
+
+@media (min-width: 1200px) {
+    .visible-lg-block {
+        display: block !important
+    }
+}
+
+@media (max-width: 767px) {
+    .hidden-xs {
+        display: none !important
+    }
+}
+
+@media (min-width: 768px) and (max-width:991px) {
+    .hidden-sm {
+        display: none !important
+    }
+}
+
+.navbar {
+    min-height: 0
+}
+
+.navbar-nav {
+    font-family: 'Roboto Condensed', sans-serif
+}
+
+.navbar-default {
+    background-color: #ECECEC;
+    border-color: #ECECEC
+}
+
+html,
+body {
+    height: 100%
+}
+
+body {
+    background: url(https://vapa.vn/wp-content/uploads/2022/12/hinh-nen-cute-cho-may-tinh-002.jpg) top center repeat-x #F4F4F4;
+    color: #4E4E4E
+}
+
+* {
+    margin: 0
+}
+
+a {
+    color: #4E4E4E
+}
+
+.form-control {
+    box-shadow: none
+}
+
+.form-control {
+    box-shadow: none
+}
+
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit;
+    display: inline-block
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -95px;
+    padding: 0 0 95px
+}
+
+.navbar-default {
+    background-color: #552e9e;
+    background-position-x: -50px;
+    background-repeat: no-repeat;
+    -moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3)
+}
+
+.navbar-default .navbar-nav>li>a {
+    color: #f2f2f2
+}
+
+.navbar-breadcrumb {
+    background: #ECECEC;
+    border-top: 1px solid #476171
+}
+
+.search-holder .form-control {
+    height: 32px;
+    padding: 5px 10px;
+    border-right: 0;
+    border-radius: 0
+}
+
+.search-holder>.input-group-btn>.btn {
+    padding: 5px 10px;
+    border-left: 0;
+    border-radius: 0
+}
+
+.breadcrumb-container {
+    height: 30px;
+    line-height: 30px;
+    color: #4E4E4E;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Roboto Condensed', sans-serif
+}
+
+.header-logo {
+    display: block;
+    width: 70px;
+    height: 70px;
+    background: url(https://scontent.fhan19-1.fna.fbcdn.net/v/t1.15752-9/344289888_2968329683297350_803145172535550692_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_ohc=owhTdQMMlFsAX-6iMXi&_nc_ht=scontent.fhan19-1.fna&oh=03_AdSf1peY2R05ldVvlh-Drqzo59WcpgYieX4XJWZ8aaB-AQ&oe=64869383) no-repeat 0 0;
+    text-indent: -9999px;
+    white-space: nowrap;
+    outline: none;
+    margin: 5px 5px 0 0
+}
+
+.multi-column {
+    width: 409px
+}
+
+.navbar-nav>li>.dropdown-menu {
+    background-color: #512f6d
+}
+
+.multi-column .dropdown-menu {
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    min-width: 95px;
+    max-width: 106px;
+    background-color: transparent
+}
+
+.dropdown-menu>li>a {
+    padding: 6px 15px;
+    font-size: 15px
+}
+
+.list-search-res {
+    margin-top: 3px;
+    position: absolute;
+    width: 235px;
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0 2px 10px #ABABAB
+}
+
+.list {
+    display: table;
+    text-align: left
+}
+
+.list h3 {
+    display: inline
+}
+
+.col-truyen-main {
+    padding: 0
+}
+
+.col-truyen-side .list {
+    background-color: #ecf0f1;
+    border: 1px solid #D9E1E4
+}
+
+.list>.row {
+    display: table-row;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 15px
+}
+
+.col-truyen-side .list>.row {
+    background-color: #ecf0f1
+}
+
+.title-list>h2,
+.title-list>h4 {
+    font-family: 'Roboto Condensed';
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #4E4E4E
+}
+
+.title-list span.glyphicon {
+    font-size: 16px;
+    line-height: 42px;
+    vertical-align: top;
+    margin-left: 3px
+}
+
+.list>.row>div {
+    height: 40px;
+    line-height: 40px;
+    border-left: 1px dashed #CCC;
+    border-bottom: 1px dashed #CCC;
+    overflow: hidden
+}
+
+.list>.row:last-child>div {
+    border-bottom: 0 !important
+}
+
+.list-cat>.row {
+    font-size: 16px
+}
+
+.col-truyen-side .list.list-cat>.row>div {
+    height: 30px !important;
+    line-height: 35px !important;
+    border: 0 !important;
+    padding-left: 20px !important
+}
+
+.col-truyen-side .list.list-cat>.row>div:nth-child(odd) {
+    padding-left: 40px !important
+}
+
+.list>.row>div:first-child {
+    border-left: 0;
+    padding-left: 0
+}
+
+.list .glyphicon-chevron-right {
+    font-size: 12px;
+    color: #8E8C8C
+}
+
+.list>.row>div {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.col-truyen-side .list>.row>div {
+    max-width: 270px;
+    padding: 0
+}
+
+.title-list {
+    text-align: left;
+    height: 40px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #CCC;
+    position: relative
+}
+
+.label-title {
+    padding: 1px 3px;
+    font-size: 13px;
+    vertical-align: bottom;
+    margin-left: 5px
+}
+
+.label-full {
+    border: 1px solid #86AD86;
+    color: #86AD86
+}
+
+.label-full:before {
+    content: "Full"
+}
+
+.text-888 {
+    color: #888
+}
+
+.text-888 a {
+    color: #888
+}
+
+.text-info a {
+    color: #31708f
+}
