@@ -30,14 +30,14 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t hoho25a5haha/my-app:v1 .
+          docker build -t hoho25a5haha/my-app:latest .
         
 
       - name: Log in to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push Docker image
-        run: docker push hoho25a5haha/my-app:v1
+        run: docker push hoho25a5haha/my-app:latest
 
       - name: Deploy Docker container
-        run: docker run -d -p 3000:3000 my-app:v1
+        run: docker run -d -p 3000:3000 hoho25a5haha/my-app:latest
