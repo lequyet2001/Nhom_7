@@ -23,13 +23,15 @@ jobs:
         run: npm install
 
       - name: Build client
-        working-directory: ./frontend
+        working-directory: ./client
         run: |
           # Add build commands if required
           # Example: npm run build
 
       - name: Build Docker image
-        run: docker build -t my-app .
+        run: |
+          docker build -t my-app:${{ github.sha }} .
+          docker tag my-app:${{ github.sha }} my-app:latest
 
       - name: Log in to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
