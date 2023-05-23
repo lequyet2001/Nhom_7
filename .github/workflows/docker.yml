@@ -40,4 +40,4 @@ jobs:
         run: docker push hoho25a5haha/my-app:v1
 
       - name: Deploy Docker container
-        run: docker run -d -p 3000:3000 my-app
+        run: docker run -d -p 3000:3000 my-app:v1
