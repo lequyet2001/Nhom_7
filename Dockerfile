@@ -20,4 +20,4 @@ COPY frontend/. ./frontend/
 EXPOSE 3000
 
 # Start the server
-CMD ["node", "server/server.js"]
+CMD ["node", "server/index.js"]
