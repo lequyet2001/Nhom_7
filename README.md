@@ -1,42 +1,76 @@
 # Nhom_7
 
-# Cài đặt docker: trên ubuntu 
-    - Cập nhật các gói danh sách trên ubuntu: sudo apt update
-    - Cài đặt các phần phụ thuộc cần thiết: sudo apt install apt-transport-https ca-certificates curl software-properties-common
-    - Thêm kho lưu trữ Docker:
-         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+# Docker Build and Deploy Workflow
 
-        sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-    - Cài đặt Docker: 
-        sudo apt update
-        sudo apt install docker-ce
-    - Kiểm tra version đang sử dụng:
-        docker --version
-    - Thiết lập Dockerfile :
-        FROM ubuntu:20.04
-        RUN apt-get update && apt-get install -y curl 
-        RUN sudo apt-get install nodejs
-        RUN sudo apt-get install npm
+This repository contains the source code and configuration files for the **Docker Build and Deploy** workflow. The workflow is triggered automatically on the `main` branch when there is a push event. It builds a Docker image, pushes it to Docker Hub, and deploys a Docker container.
 
+## Workflow Steps
 
+1. **Checkout Repository**
+   - Action: [actions/checkout@v2](https://github.com/actions/checkout)
+   - Description: This step checks out the repository code.
 
+2. **Set up Node.js**
+   - Action: [actions/setup-node@v2](https://github.com/actions/setup-node)
+   - Description: Sets up Node.js by installing the specified Node.js version (14 in this case).
 
-        FROM node:18.12.1
-        WORKDIR /
-        COPY package*.json  ./
-        RUN npm install 
+3. **Install server dependencies**
+   - Description: Installs server dependencies using the `npm install` command.
+   - Working Directory: `./server`
 
-        COPY . .
+4. **Build Docker image**
+   - Description: Builds a Docker image using the `docker build` command.
+   - Command:
+     ```shell
+     docker build -t hoho25a5haha/my-app:latest .
+     ```
 
-        EXPOSE 9090
-        CMD ["npm","start"]
+5. **Log in to Docker Hub**
+   - Description: Logs in to Docker Hub using the `docker login` command.
+   - Command:
+     ```shell
+     docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+     ```
 
+6. **Push Docker image**
+   - Description: Pushes the Docker image to the Docker Hub repository.
+   - Command:
+     ```shell
+     docker push hoho25a5haha/my-app:latest
+     ```
 
-    - Xây dựng images Docker:
-        docker build -t your-image-name .
-    - Đăng nhập Docker: 
-        docker login
-    - Tải image lên Docker Hub:
-        docker push your-username/your-image-name
-# CI/CD với github action và heroku
-    
+7. **Deploy Docker container**
+   - Description: Deploys a Docker container using the `docker run` command.
+   - Command:
+     ```shell
+     docker run -d -p 3000:3000 hoho25a5haha/my-app:latest
+     ```
+
+## Dockerfile
+
+The Dockerfile specifies the steps to build the Docker image for the application. Here is the breakdown of the Dockerfile contents:
+
+```Dockerfile
+# Specify the base image
+FROM node:14
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to the container
+COPY server/package*.json ./server/
+
+# Install server dependencies
+RUN cd server && npm install
+
+# Copy the server code to the container
+COPY server/. ./server/
+
+# Copy the client code to the container
+COPY frontend/. ./frontend/
+
+# Expose the server port
+EXPOSE 3000
+
+# Start the server
+CMD ["node", "server/index.js"]
