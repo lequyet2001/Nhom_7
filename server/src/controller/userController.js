@@ -9,7 +9,7 @@ const getAllUsers = (req, res) => {
             res.status(500).send('Failed to connect to SQL Server');
         } else {
             const request = new sql.Request();
-            request.query(query.getAllUser, (err, result) => {
+            request.query(query.getAllUser(), (err, result) => {
                 if (err) {
                     console.error('Failed to execute query:', err);
                     res.status(500).send('Failed to execute query');
