@@ -15,6 +15,7 @@ const getAllUsers = (req, res) => {
                     res.status(500).send('Failed to execute query');
                 } else {
                     res.json(result.recordset);
+                    console.log(result.recordset)
                 }
             });
         }
