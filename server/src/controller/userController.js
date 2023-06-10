@@ -5,7 +5,7 @@ const query= require('./query')
 const getAllUsers = (req, res) => {
     sql.connect(config, (err) => {
         if (err) {
-            console.error('Failed to connect to SQL Server:', err);
+            console.error('Failed to connect to SQL Server:', err.message,err.name);
             res.status(500).send('Failed to connect to SQL Server');
         } else {
             const request = new sql.Request();

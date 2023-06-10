@@ -4,9 +4,11 @@ module.exports = {
     password: process.env.PASSWORD,
     server: process.env.SERVER,
     database: process.env.DATABASE,
+    port: process.env.PORT,
     options: {
-      encrypt: false,
+      encrypt: true,
       trustServerCertificate: true
     }
   };
+  
   
