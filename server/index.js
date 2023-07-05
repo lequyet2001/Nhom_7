@@ -1,10 +1,11 @@
 const express = require('express')
 const app = express()
+const cors=require('cors')
 require('dotenv').config();
 // Require the user router
 const usersRouter = require('./src/router/users.js');
 const mangaRouter=require('./src/router/manga.js');
-
+app.use(cors())
 app.use(express.json())
 
 // Use the user router for the '/users' route
