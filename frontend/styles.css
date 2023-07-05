@@ -1,0 +1,14 @@
+#data-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  #data-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #data-list li {
+    margin-bottom: 10px;
+  }
+  
