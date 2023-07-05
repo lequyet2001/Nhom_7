@@ -23,7 +23,7 @@ const getAllManga=(req,res)=>{
     })
 }
 const createManga = (req, res) => {
-    const { MANGA_NAME,AUTHER,MANGA_DESCRIPTION } = req.body; 
+    const { MANGA_NAME,AUTHER,MANGA_DESCRIPTION,IMAGE} = req.body; 
     console.log(req.body)
 
 
@@ -33,7 +33,7 @@ const createManga = (req, res) => {
             res.status(500).send('Failed to connect to SQL Server');
         } else {
             const request = new sql.Request();
-            request.query(query.creatManga(MANGA_NAME,AUTHER,MANGA_DESCRIPTION), (err, result) => {
+            request.query(query.creatManga(MANGA_NAME,AUTHER,MANGA_DESCRIPTION,IMAGE), (err, result) => {
                 if (err) {
                     console.error('Failed to execute query:', err);
                     res.status(500).send('Failed to create manga');
