@@ -13,7 +13,7 @@ const getAllcate=(req,res)=>{
             request.query(query.getAllCate(),(err,result)=>{
                 if(err){
                     console.error('Failed to execute query:', err);
-                    res.status(500).send('Failed to execute query');
+                    res.status(500).send('Failed to execute query',err);
                 } else {
                     res.json(result.recordset);
                     console.log(result.recordset)
@@ -24,10 +24,35 @@ const getAllcate=(req,res)=>{
     })
 }
 
+const getCateByIDManga= (req, res) => {
+    const id = req.params.id; // Assuming the user ID is passed as a route parameter
+
+    sql.connect(config, (err) => {
+        if (err) {
+            console.error('Failed to connect to SQL Server:', err);
+            res.status(500).send('Failed to connect to SQL Server');
+        } else {
+            const request = new sql.Request();
+            request.query(query.getCateByIDManga(id), (err, result) => {
+                if (err) {
+                    console.error('Failed to execute query:', err);
+                    res.status(500).send('Failed to execute query');
+                } else {
+                    if (result.recordset.length > 0) {
+                        res.status(200).json(result.recordset);
+                    } else {
+                        res.status(404).send('User not found');
+                    }
+                }
+            });
+        }
+    });
+};
 
 
 
 
 module.exports = {
-    getAllcate
+    getAllcate,
+    getCateByIDManga
 };

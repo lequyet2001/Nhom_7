@@ -11,7 +11,7 @@ app.use(express.json())
 
 // Use the user router for the '/users' route
 app.use('/users', usersRouter);
-app.use('/',mangaRouter);
+app.use('/manga',mangaRouter);
 app.use('/cate',cateRouter)
 app.listen(process.env.P2, () => {
   console.log("Server đang chạy trên cổng 3000!!!!")
