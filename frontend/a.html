@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Danh sách ảnh content</title>
+    <style>
+        .list-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .content-image {
+            max-width: 200px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="list-content" id="list-content"></div>
+
+    <script>
+        // Mảng danh sách ảnh content
+        var danhSachAnh = [
+        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
+        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
+        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
+        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
+        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
+        // Thêm các đường dẫn ảnh khác vào đây
+    ];
+
+        // Hàm hiển thị danh sách ảnh content
+        function hienThiDanhSachAnh() {
+            var listContent = document.getElementById('list-content');
+
+            // Xóa nội dung cũ
+            listContent.innerHTML = '';
+
+            // Tạo các phần tử hình ảnh và thêm vào danh sách
+            for (var i = 0; i < danhSachAnh.length; i++) {
+                var imagePath = danhSachAnh[i];
+
+                var imgElement = document.createElement('img');
+                imgElement.src = imagePath;
+                imgElement.alt = 'Ảnh ' + (i + 1);
+                imgElement.classList.add('content-image');
+
+                listContent.appendChild(imgElement);
+            }
+        }
+
+        // Khi trang được tải, hiển thị danh sách ảnh content
+        window.onload = function() {
+            hienThiDanhSachAnh();
+        };
+    </script>
+</body>
+</html>

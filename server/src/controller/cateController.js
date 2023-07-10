@@ -38,10 +38,10 @@ const getCateByIDManga= (req, res) => {
                     console.error('Failed to execute query:', err);
                     res.status(500).send('Failed to execute query');
                 } else {
-                    if (result.recordset.length > 0) {
+                    if (result.recordset.length !=null) {
                         res.status(200).json(result.recordset);
                     } else {
-                        res.status(404).send('User not found');
+                        res.status(404).send('category not found');
                     }
                 }
             });

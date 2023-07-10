@@ -1,7 +1,7 @@
 fetch('http://localhost:3000/manga')
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        // console.log(data)
         displayData(data);
     })
     .catch(error => {
@@ -18,7 +18,7 @@ function displayData(data) {
         itemDiv.setAttribute('itemscope', '');
         itemDiv.setAttribute('itemtype', 'https://schema.org/Book');
         var link = document.createElement('a');
-        link.href = './linhvuthienha.html';
+        link.href = './chitiettruyen.html';
         link.setAttribute('itemprop', 'url');
         var image = document.createElement('img');
         image.src = item.IMAGE;
@@ -42,6 +42,7 @@ function displayData(data) {
             fetch(`http://localhost:3000/manga/${item.M_ID}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log(data)
                     localStorage.setItem('id',JSON.stringify(data))
                     console.log(data.MANGA_NAME)
                     
