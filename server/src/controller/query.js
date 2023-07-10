@@ -17,5 +17,6 @@ module.exports = {
     getCateByIDManga: (id) => `select c.CATEGORY_NAME ,c.C_ID from MANGA m
     join MANGA_CATEGORY  mc on mc.M_ID=m.M_ID
     join CATEGORY c on c.C_ID=mc.C_ID
-    where m.M_ID=${id}`
+    where m.M_ID=${id}`,
+    getConten:(id)=>`select * from content where M_ID=${id}`
 }
