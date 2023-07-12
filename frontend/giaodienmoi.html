@@ -25,6 +25,20 @@
         <!--[if lt IE 9]><script src="https://cdnvn.truyentranhonline.vn/lib/css3-mediaqueries.min.js"></script><![endif]-->
         <link rel="canonical" href="https://truyentranhonline.vn/">
         <style>
+            .navbar-brand {
+                padding: 10px 15px;
+                font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #ffffff;
+                bottom: 20px;
+                border-radius: 4px;
+            }
+
+            .navbar-brand:hover {
+  
+                color: #000;
+            }
             html {
                 font-family: sans-serif;
                 -ms-text-size-adjust: 100%;
@@ -844,7 +858,7 @@
             }
 
             body {
-                background: url(https://vapa.vn/wp-content/uploads/2022/12/hinh-nen-cute-cho-may-tinh-002.jpg) top center repeat-x #F4F4F4;
+                background: url(https://vapa.vn/wp-content/uploads/2022/12/hinh-nen-cute-cho-may-tinh-002.jpg) top  #F4F4F4;
                 color: #4E4E4E
             }
 
@@ -1298,7 +1312,7 @@
                 }
 
                 .col-truyen-main {
-                    width: 73%
+                    width: 100%
                 }
 
                 #list-index .col-truyen-side {
@@ -1460,26 +1474,65 @@
         <div id="wrap">
             <div class="navbar navbar-default navbar-static-top" role="navigation" id="nav">
                 <div class="container">
-                 
                     <div class="navbar-collapse collapse" itemscope itemtype="https://schema.org/WebSite">
-                        <meta itemprop="url" content="https://truyentranhonline.vn" />
-                        <form class="navbar-form navbar-right" action="https://truyentranhonline.vn/tim-kiem/"
-                            role="search" itemprop="potentialAction" itemscope
-                            itemtype="https://schema.org/SearchAction">
-                            <div class="input-group search-holder">
-                                <meta itemprop="target"
-                                    content="https://truyentranhonline.vn/tim-kiem/?tukhoa={tukhoa}" />
-                                <input class="form-control" id="search-input" type="search" name="tukhoa"
-                                    placeholder="Tìm kiếm..." value="" itemprop="query-input" required>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="list-group list-search-res hide"></div>
-                        </form>
-                        <div id="login-status" class="hide"></div>
+                     
+                        <div class="search-container">
+                            <a class="navbar-brand home" href="http://127.0.0.1:5500/frontend/giaodienmoi.html">FUN</a>
+                            <input type="text" id="search-input" placeholder="Nhập từ khóa tìm kiếm">
+                        </div>
+                        <div id="suggestion"></div>
+                        <script src="search.js"></script>
+                        <style>
+                            .search-container {
+                                display: flex;
+                                align-items: center;
+                                position: relative;
+                            }
+                        
+                            #search-input {
+                                padding: 5px;
+                                border: 1px solid #ccc;
+                                border-radius: 5px;
+                                margin-left: auto;
+                                width: 200px;
+                            }
+                        
+                            #suggestion {
+                                position: absolute;
+                                top: calc(100% + 5px);
+                                right: 0;
+                                width: 20%;
+                                background-color: #fff;
+                                border: 1px solid #ccc;
+                                border-top: none;
+                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                                z-index: 999;
+                            
+                            }
+                        
+                            .suggestion-item {
+                                cursor: pointer;
+                                padding: 5px;
+                                color: #000;
+                            }
+                        
+                            .suggestion-item:hover {
+                                background-color: #f0f0f0;
+                            }
+                            .search-container {
+                                display: flex;
+                                align-items: center;   
+                            }
+                            #search-input {
+                                /* Thêm các kiểu hiển thị tìm kiếm tùy ý */
+                                padding: 5px;
+                                border: 1px solid #ccc;
+                                border-radius: 5px;
+                                margin-left: auto; 
+                            }
+                            
+                        </style>
+
                     </div>
                 </div>
                 <div class="navbar-breadcrumb">
@@ -1495,10 +1548,28 @@
                     <a href="https://truyentranhonline.vn/danh-sach/truyen-hot/" title="Truyện hot">
                         <span class="glyphicon glyphicon-fire"></span>
                     </a>
-                    <select id="hot-select" class="form-control new-select" aria-label="Chọn thể loại"></select>
+                    <!-- <select id="hot-select" class="form-control new-select" aria-label="Chọn thể loại"></select> -->
+                    <div class="index-intro" id="list1"></div>
                 </div>
-                <div class="index-intro" id="list1"></div>
             </div>
+            <div class="container" id="list-index">
+                <div class="row text-center"></div>
+                <div class="hide" id="history-holder"></div>
+                <div class="list list-truyen list-new col-xs-12 col-sm-12 col-md-8 col-truyen-main  " >
+                  <div class="title-list">
+                    <h2><a title="Truyện mới">Truyện mới cập nhật</a></h2>
+                        <select id="new-select"
+                      class="form-control new-select" aria-label="Chọn thể loại">
+                      <!-- <option value="all">Tất cả</option> -->
+                    </select>
+                  </div>
+                  <div class="row" itemscope itemtype="https://schema.org/Book" id="allmanga">
+                   
+                </div>
+              
+              </div>
+          
+              </div>
         </div>
     </body>
 

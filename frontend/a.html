@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Danh sách ảnh content</title>
-    <style>
-        .list-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .content-image {
-            max-width: 200px;
-            margin: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="list-content" id="list-content"></div>
-
+    <title>Trang quản lý truyện</title>
     <script>
-        // Mảng danh sách ảnh content
-        var danhSachAnh = [
-        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
-        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
-        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
-        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
-        'https://hhhkungfu.tv/wp-content/uploads/Dau-Pha-Thuong-Khung-5.jpg',
-        // Thêm các đường dẫn ảnh khác vào đây
-    ];
+        // Một số biến toàn cục
+        var truyenList = []; // Mảng lưu danh sách truyện
 
-        // Hàm hiển thị danh sách ảnh content
-        function hienThiDanhSachAnh() {
-            var listContent = document.getElementById('list-content');
+        // Hàm thêm truyện mới
+        function themTruyen() {
+            var tenTruyen = document.getElementById("tenTruyen").value;
+            var tacGia = document.getElementById("tacGia").value;
+            var theLoai = document.getElementById("theLoai").value;
+
+            // Tạo đối tượng truyện mới và thêm vào mảng
+            var truyen = {
+                tenTruyen: tenTruyen,
+                tacGia: tacGia,
+                theLoai: theLoai
+            };
+            truyenList.push(truyen);
+
+            // Cập nhật danh sách truyện
+            capNhatDanhSachTruyen();
+        }
+
+        // Hàm cập nhật danh sách truyện
+        function capNhatDanhSachTruyen() {
+            var danhSachTruyen = document.getElementById("danhSachTruyen");
 
             // Xóa nội dung cũ
-            listContent.innerHTML = '';
+            danhSachTruyen.innerHTML = "";
 
-            // Tạo các phần tử hình ảnh và thêm vào danh sách
-            for (var i = 0; i < danhSachAnh.length; i++) {
-                var imagePath = danhSachAnh[i];
+            // Thêm các mục truyện vào danh sách
+            for (var i = 0; i < truyenList.length; i++) {
+                var truyen = truyenList[i];
 
-                var imgElement = document.createElement('img');
-                imgElement.src = imagePath;
-                imgElement.alt = 'Ảnh ' + (i + 1);
-                imgElement.classList.add('content-image');
-
-                listContent.appendChild(imgElement);
+                var listItem = document.createElement("li");
+                listItem.innerHTML = truyen.tenTruyen + " - " + truyen.tacGia + " - " + truyen.theLoai;
+                danhSachTruyen.appendChild(listItem);
             }
         }
-
-        // Khi trang được tải, hiển thị danh sách ảnh content
-        window.onload = function() {
-            hienThiDanhSachAnh();
-        };
     </script>
+</head>
+<body>
+    <h1>Trang quản lý truyện</h1>
+    <form>
+        <label for="tenTruyen">Tên truyện:</label>
+        <input type="text" id="tenTruyen" name="tenTruyen"><br>
+
+        <label for="tacGia">Tác giả:</label>
+        <input type="text" id="tacGia" name="tacGia"><br>
+
+        <label for="theLoai">Thể loại:</label>
+        <input type="text" id="theLoai" name="theLoai"><br>
+
+        <button type="button" onclick="themTruyen()">Thêm truyện</button>
+    </form>
+
+    <h2>Danh sách truyện</h2>
+    <ul id="danhSachTruyen"></ul>
 </body>
 </html>

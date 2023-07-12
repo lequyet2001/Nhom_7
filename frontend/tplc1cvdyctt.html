@@ -15,14 +15,30 @@
         prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# book: http://ogp.me/ns/book# profile: http://ogp.me/ns/profile#">
         <meta charset="UTF-8">
         <script src="script4.js"></script>
+       
         <style>
             /* CSS để tạo hiệu ứng trang truyện tranh */
+            .navbar-brand {
+                padding: 10px 15px;
+                font-size: 18px;
+                font-weight: bold;
+                text-decoration: none;
+                color: #ffffff;
+                bottom: 20px;
+                border-radius: 4px;
+            }
+
+            .navbar-brand:hover {
+  
+                color: #000;
+            }
+
             body {
                 margin: 0;
                 padding: 0;
                 background-color: #f0f0f0;
             }
-    
+
             .comic-container {
                 max-width: 800px;
                 margin: 0 auto;
@@ -30,45 +46,47 @@
                 background-color: #ffffff;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
-    
+
             .list-content {
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
                 align-items: center;
 
-                max-height: 750px; /* Chiều cao tối đa của phần hiển thị */
-                overflow-y: scroll; /* Kích hoạt thanh cuộn dọc */
+                max-height: 750px;
+                /* Chiều cao tối đa của phần hiển thị */
+                overflow-y: scroll;
+                /* Kích hoạt thanh cuộn dọc */
 
             }
-    
+
             .content-image {
-         
+
 
                 margin: 10px;
                 flex: 2 1 100%;
 
-            
+
                 flex: 1 1 100%;
 
             }
-    
+
             .comic-info {
                 margin-bottom: 20px;
             }
-    
+
             .comic-title {
                 font-size: 24px;
                 font-weight: bold;
                 margin: 0;
             }
-    
+
             .comic-navigation {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
             }
-    
+
             .comic-navigation-button {
                 background-color: #f0f0f0;
                 border: none;
@@ -1522,27 +1540,65 @@
         <div id="wrap">
             <div class="navbar navbar-default navbar-static-top" role="navigation" id="nav">
                 <div class="container">
-
                     <div class="navbar-collapse collapse" itemscope itemtype="https://schema.org/WebSite">
-                        <meta itemprop="url" content="https://truyentranhonline.vn" />
+                     
+                        <div class="search-container">
+                            <a class="navbar-brand home" href="http://127.0.0.1:5500/frontend/giaodienmoi.html">FUN</a>
+                            <input type="text" id="search-input" placeholder="Nhập từ khóa tìm kiếm">
+                        </div>
+                        <div id="suggestion"></div>
+                        <script src="search.js"></script>
+                        <style>
+                            .search-container {
+                                display: flex;
+                                align-items: center;
+                                position: relative;
+                            }
+                        
+                            #search-input {
+                                padding: 5px;
+                                border: 1px solid #ccc;
+                                border-radius: 5px;
+                                margin-left: auto;
+                                width: 200px;
+                            }
+                        
+                            #suggestion {
+                                position: absolute;
+                                top: calc(100% + 5px);
+                                right: 0;
+                                width: 20%;
+                                background-color: #fff;
+                                border: 1px solid #ccc;
+                                border-top: none;
+                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                                z-index: 999;
+                            
+                            }
+                        
+                            .suggestion-item {
+                                cursor: pointer;
+                                padding: 5px;
+                                color: #000;
+                            }
+                        
+                            .suggestion-item:hover {
+                                background-color: #f0f0f0;
+                            }
+                            .search-container {
+                                display: flex;
+                                align-items: center;   
+                            }
+                            #search-input {
+                                /* Thêm các kiểu hiển thị tìm kiếm tùy ý */
+                                padding: 5px;
+                                border: 1px solid #ccc;
+                                border-radius: 5px;
+                                margin-left: auto; 
+                            }
+                            
+                        </style>
 
-                        <form class="navbar-form navbar-right" action="https://truyentranhonline.vn/tim-kiem/"
-                            role="search" itemprop="potentialAction" itemscope
-                            itemtype="https://schema.org/SearchAction">
-                            <div class="input-group search-holder">
-                                <meta itemprop="target"
-                                    content="https://truyentranhonline.vn/tim-kiem/?tukhoa={tukhoa}" />
-                                <input class="form-control" id="search-input" type="search" name="tukhoa"
-                                    placeholder="Tìm kiếm..." value="" itemprop="query-input" required>
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default" type="submit">
-                                        <span class="glyphicon glyphicon-search"></span>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="list-group list-search-res hide"></div>
-                        </form>
-                        <div id="login-status" class="hide"></div>
                     </div>
                 </div>
                 <div class="navbar-breadcrumb">
@@ -1552,19 +1608,19 @@
             </div>
             <div class="comic-container">
                 <div class="comic-info">
-                    <h1 class="comic-title">Tên truyện tranh</h1>
+                    <h1 class="comic-title"></h1>
                     <div class="comic-navigation">
                         <button class="comic-navigation-button" onclick="chuyenChuong('previous')">Chương trước</button>
+                        <span id="current-chapter"></span>
                         <button class="comic-navigation-button" onclick="chuyenChuong('next')">Chương tiếp</button>
                     </div>
                 </div>
                 <div class="list-content" id="list-content"></div>
             </div>
-     
+
     </body>
 
 
     </html>
 
-    </html>
-
+</html>

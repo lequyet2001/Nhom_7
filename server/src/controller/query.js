@@ -6,10 +6,16 @@ module.exports = {
     createuser: (username, email, pass) => `INSERT INTO [dbo].[user] (USER_NAME, EMAIL, PASS,USER_STATE_BAN) VALUES ('${username}', '${email}', '${pass}',0)`,
     updateBan: (USER_STATE_BAN, userId) => `UPDATE [dbo].[user] SET USER_STATE_BAN = '${USER_STATE_BAN}' WHERE U_ID = ${userId}`,
     deleteUser: (userId) => `DELETE FROM [dbo].[user] WHERE U_ID='${userId}'`,
-    getAllManga: () => `SELECT  ROW_NUMBER() OVER (ORDER BY MANGA_VIEW DESC) AS top_manga, M_ID,MANGA_NAME,AUTHOR,MANGA_VIEW,MANGA_DESCRIPTION, IMAGE,NHOM_DICH
+    getTopManga: () => `SELECT  ROW_NUMBER() OVER (ORDER BY MANGA_VIEW DESC) AS top_manga, M_ID,MANGA_NAME,AUTHOR,MANGA_VIEW,MANGA_DESCRIPTION, IMAGE,NHOM_DICH,MANGA_UPLOAD_TIME
     FROM dbo.MANGA
     ORDER BY MANGA_VIEW DESC
     `,
+    getAllManga:()=>`select * from MANGA`,
+    getAllMangaByCateID:(id)=>`select ROW_NUMBER() OVER (ORDER BY m.MANGA_VIEW DESC) AS top_manga,m.*, c.CATEGORY_NAME from MANGA m
+    join MANGA_CATEGORY  mc on mc.M_ID=m.M_ID
+    join CATEGORY c on c.C_ID=mc.C_ID
+    where c.C_ID=${id}
+	ORDER BY m.MANGA_VIEW DESC`,
     getAllMangaByID: (id) => `select * from dbo.MANGA where M_ID=${id}`,
     getMangaByName: (MANGA_NAME) => `select * from [dbo].[MANGA] WHERE MANGA_NAME=${MANGA_NAME}`,
     creatManga: (MANGA_NAME, AUTHER, MANGA_DESCRIPTION, IMAGE) => `INSERT INTO [dbo].[MANGA] (MANGA_NAME,AUTHOR,MANGA_VIEW,MANGA_DESCRIPTION,IMAGE) VALUES (${MANGA_NAME},${AUTHER},0,${MANGA_DESCRIPTION},${IMAGE})`,
@@ -18,5 +24,12 @@ module.exports = {
     join MANGA_CATEGORY  mc on mc.M_ID=m.M_ID
     join CATEGORY c on c.C_ID=mc.C_ID
     where m.M_ID=${id}`,
-    getConten:(id)=>`select * from content where M_ID=${id}`
+    getConten: (id) => `select c.CHAP_NUM,c.title, i.IMAGE from  content c
+    join manga_images mi on mi.id_content=c.IMAGE
+    join images i on i.id=mi.id_image
+    where c.M_ID=${id}`,
+    getChapter:(id)=>`select distinct c.CHAP_NUM,c.title, i.IMAGE from  content c
+    join manga_images mi on mi.id_content=c.IMAGE
+    join images i on i.id=mi.id_image
+    where c.M_ID=${id}`
 }

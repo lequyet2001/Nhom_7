@@ -1,4 +1,4 @@
-var d = localStorage.getItem("id");
+var d = localStorage.getItem("id_manga");
 var dataj = JSON.parse(d);
 var dataElement = document.getElementById("manga");
 
