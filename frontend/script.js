@@ -89,14 +89,16 @@ function displayDataCate(data) {
     div.onchange = function (event) {
         var selectedCategoryId = event.target.value;
         console.log(event.target)
+        if(selectedCategoryId!='all'){
 
-        fetch(`http://localhost:3000/manga/getbycate?id=${selectedCategoryId}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer xxxxxxxx'
-            }
-        })
+            
+            fetch(`http://localhost:3000/manga/getbycate?id=${selectedCategoryId}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer xxxxxxxx'
+                }
+            })
             .then(response => response.json())
             .then(data2 => {
                 // console.log(`data from: ${data2}`);
@@ -105,13 +107,31 @@ function displayDataCate(data) {
             .catch(error => {
                 console.error('Lỗi:', error);
             });
-    };
-}
-
-
-
-function displayData2(data) {
-    var div = document.getElementById('allmanga');
+        }
+        else{
+            fetch(`http://localhost:3000/manga`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer xxxxxxxx'
+                }
+            })
+            .then(response => response.json())
+            .then(data2 => {
+                // console.log(`data from: ${data2}`);
+                displayData2(data2);
+            })
+            .catch(error => {
+                console.error('Lỗi:', error);
+            });
+        }
+        };
+    }
+    
+    
+    
+    function displayData2(data) {
+        var div = document.getElementById('allmanga');
     div.innerHTML = ''; // Xóa nội dung hiện tại của phần tử div
 
     data.forEach(pp => {
